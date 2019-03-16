@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.xinshui.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.lt.xinshui.entity.User">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Sex" jdbcType="VARCHAR" property="sex" />
+    <result column="ID_Number" jdbcType="VARCHAR" property="idNumber" />
+    <result column="Date_Of_Birth" jdbcType="DATE" property="dateOfBirth" />
+    <result column="Age" jdbcType="VARCHAR" property="age" />
+    <result column="Nation" jdbcType="VARCHAR" property="nation" />
+    <result column="Marital_Status" jdbcType="VARCHAR" property="maritalStatus" />
+    <result column="Political_Outlook" jdbcType="VARCHAR" property="politicalOutlook" />
+    <result column="Education" jdbcType="VARCHAR" property="education" />
+    <result column="Graduate_School" jdbcType="VARCHAR" property="graduateSchool" />
+    <result column="Graduation_Time" jdbcType="DATE" property="graduationTime" />
+    <result column="Registered_Address" jdbcType="VARCHAR" property="registeredAddress" />
+    <result column="Account_Character" jdbcType="VARCHAR" property="accountCharacter" />
+    <result column="Entry_Time" jdbcType="DATE" property="entryTime" />
+    <result column="Entry_Years" jdbcType="VARCHAR" property="entryYears" />
+    <result column="Tel" jdbcType="VARCHAR" property="tel" />
+    <result column="Emergency_Contact" jdbcType="VARCHAR" property="emergencyContact" />
+    <result column="Emergency_Contact_Relations" jdbcType="VARCHAR" property="emergencyContactRelations" />
+    <result column="Emergency_Contact_Tel" jdbcType="VARCHAR" property="emergencyContactTel" />
+    <result column="Bank_Card_Number" jdbcType="VARCHAR" property="bankCardNumber" />
+    <result column="Social_Insurance" jdbcType="VARCHAR" property="socialInsurance" />
+    <result column="Accumulation_Fund" jdbcType="VARCHAR" property="accumulationFund" />
+    <result column="Date_Of_Correction" jdbcType="DATE" property="dateOfCorrection" />
+    <result column="Days_Of_Annual_Leave" jdbcType="VARCHAR" property="daysOfAnnualLeave" />
+    <result column="QQ" jdbcType="VARCHAR" property="qq" />
+    <result column="WeChat" jdbcType="VARCHAR" property="wechat" />
+    <result column="Is_Active" jdbcType="VARCHAR" property="isActive" />
+    <result column="Ins_Time" jdbcType="TIMESTAMP" property="insTime" />
+    <result column="Ins_User" jdbcType="VARCHAR" property="insUser" />
+    <result column="Upd_Time" jdbcType="TIMESTAMP" property="updTime" />
+    <result column="Upd_User" jdbcType="VARCHAR" property="updUser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, Name, Sex, ID_Number, Date_Of_Birth, Age, Nation, Marital_Status, Political_Outlook, 
+    Education, Graduate_School, Graduation_Time, Registered_Address, Account_Character, 
+    Entry_Time, Entry_Years, Tel, Emergency_Contact, Emergency_Contact_Relations, Emergency_Contact_Tel, 
+    Bank_Card_Number, Social_Insurance, Accumulation_Fund, Date_Of_Correction, Days_Of_Annual_Leave, 
+    QQ, WeChat, Is_Active, Ins_Time, Ins_User, Upd_Time, Upd_User
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from User
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from User
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lt.xinshui.entity.User">
+    insert into User (Id, Name, Sex, 
+      ID_Number, Date_Of_Birth, Age, 
+      Nation, Marital_Status, Political_Outlook, 
+      Education, Graduate_School, Graduation_Time, 
+      Registered_Address, Account_Character, Entry_Time, 
+      Entry_Years, Tel, Emergency_Contact, 
+      Emergency_Contact_Relations, Emergency_Contact_Tel, 
+      Bank_Card_Number, Social_Insurance, Accumulation_Fund, 
+      Date_Of_Correction, Days_Of_Annual_Leave, QQ, 
+      WeChat, Is_Active, Ins_Time, 
+      Ins_User, Upd_Time, Upd_User
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{idNumber,jdbcType=VARCHAR}, #{dateOfBirth,jdbcType=DATE}, #{age,jdbcType=VARCHAR}, 
+      #{nation,jdbcType=VARCHAR}, #{maritalStatus,jdbcType=VARCHAR}, #{politicalOutlook,jdbcType=VARCHAR}, 
+      #{education,jdbcType=VARCHAR}, #{graduateSchool,jdbcType=VARCHAR}, #{graduationTime,jdbcType=DATE}, 
+      #{registeredAddress,jdbcType=VARCHAR}, #{accountCharacter,jdbcType=VARCHAR}, #{entryTime,jdbcType=DATE}, 
+      #{entryYears,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{emergencyContact,jdbcType=VARCHAR}, 
+      #{emergencyContactRelations,jdbcType=VARCHAR}, #{emergencyContactTel,jdbcType=VARCHAR}, 
+      #{bankCardNumber,jdbcType=VARCHAR}, #{socialInsurance,jdbcType=VARCHAR}, #{accumulationFund,jdbcType=VARCHAR}, 
+      #{dateOfCorrection,jdbcType=DATE}, #{daysOfAnnualLeave,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, 
+      #{wechat,jdbcType=VARCHAR}, #{isActive,jdbcType=VARCHAR}, #{insTime,jdbcType=TIMESTAMP}, 
+      #{insUser,jdbcType=VARCHAR}, #{updTime,jdbcType=TIMESTAMP}, #{updUser,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lt.xinshui.entity.User">
+    insert into User
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="sex != null">
+        Sex,
+      </if>
+      <if test="idNumber != null">
+        ID_Number,
+      </if>
+      <if test="dateOfBirth != null">
+        Date_Of_Birth,
+      </if>
+      <if test="age != null">
+        Age,
+      </if>
+      <if test="nation != null">
+        Nation,
+      </if>
+      <if test="maritalStatus != null">
+        Marital_Status,
+      </if>
+      <if test="politicalOutlook != null">
+        Political_Outlook,
+      </if>
+      <if test="education != null">
+        Education,
+      </if>
+      <if test="graduateSchool != null">
+        Graduate_School,
+      </if>
+      <if test="graduationTime != null">
+        Graduation_Time,
+      </if>
+      <if test="registeredAddress != null">
+        Registered_Address,
+      </if>
+      <if test="accountCharacter != null">
+        Account_Character,
+      </if>
+      <if test="entryTime != null">
+        Entry_Time,
+      </if>
+      <if test="entryYears != null">
+        Entry_Years,
+      </if>
+      <if test="tel != null">
+        Tel,
+      </if>
+      <if test="emergencyContact != null">
+        Emergency_Contact,
+      </if>
+      <if test="emergencyContactRelations != null">
+        Emergency_Contact_Relations,
+      </if>
+      <if test="emergencyContactTel != null">
+        Emergency_Contact_Tel,
+      </if>
+      <if test="bankCardNumber != null">
+        Bank_Card_Number,
+      </if>
+      <if test="socialInsurance != null">
+        Social_Insurance,
+      </if>
+      <if test="accumulationFund != null">
+        Accumulation_Fund,
+      </if>
+      <if test="dateOfCorrection != null">
+        Date_Of_Correction,
+      </if>
+      <if test="daysOfAnnualLeave != null">
+        Days_Of_Annual_Leave,
+      </if>
+      <if test="qq != null">
+        QQ,
+      </if>
+      <if test="wechat != null">
+        WeChat,
+      </if>
+      <if test="isActive != null">
+        Is_Active,
+      </if>
+      <if test="insTime != null">
+        Ins_Time,
+      </if>
+      <if test="insUser != null">
+        Ins_User,
+      </if>
+      <if test="updTime != null">
+        Upd_Time,
+      </if>
+      <if test="updUser != null">
+        Upd_User,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null">
+        #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="dateOfBirth != null">
+        #{dateOfBirth,jdbcType=DATE},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null">
+        #{maritalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="politicalOutlook != null">
+        #{politicalOutlook,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="graduateSchool != null">
+        #{graduateSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationTime != null">
+        #{graduationTime,jdbcType=DATE},
+      </if>
+      <if test="registeredAddress != null">
+        #{registeredAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCharacter != null">
+        #{accountCharacter,jdbcType=VARCHAR},
+      </if>
+      <if test="entryTime != null">
+        #{entryTime,jdbcType=DATE},
+      </if>
+      <if test="entryYears != null">
+        #{entryYears,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContact != null">
+        #{emergencyContact,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContactRelations != null">
+        #{emergencyContactRelations,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContactTel != null">
+        #{emergencyContactTel,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNumber != null">
+        #{bankCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="socialInsurance != null">
+        #{socialInsurance,jdbcType=VARCHAR},
+      </if>
+      <if test="accumulationFund != null">
+        #{accumulationFund,jdbcType=VARCHAR},
+      </if>
+      <if test="dateOfCorrection != null">
+        #{dateOfCorrection,jdbcType=DATE},
+      </if>
+      <if test="daysOfAnnualLeave != null">
+        #{daysOfAnnualLeave,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="isActive != null">
+        #{isActive,jdbcType=VARCHAR},
+      </if>
+      <if test="insTime != null">
+        #{insTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insUser != null">
+        #{insUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updTime != null">
+        #{updTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updUser != null">
+        #{updUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lt.xinshui.entity.User">
+    update User
+    <set>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        Sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null">
+        ID_Number = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="dateOfBirth != null">
+        Date_Of_Birth = #{dateOfBirth,jdbcType=DATE},
+      </if>
+      <if test="age != null">
+        Age = #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        Nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null">
+        Marital_Status = #{maritalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="politicalOutlook != null">
+        Political_Outlook = #{politicalOutlook,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        Education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="graduateSchool != null">
+        Graduate_School = #{graduateSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationTime != null">
+        Graduation_Time = #{graduationTime,jdbcType=DATE},
+      </if>
+      <if test="registeredAddress != null">
+        Registered_Address = #{registeredAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCharacter != null">
+        Account_Character = #{accountCharacter,jdbcType=VARCHAR},
+      </if>
+      <if test="entryTime != null">
+        Entry_Time = #{entryTime,jdbcType=DATE},
+      </if>
+      <if test="entryYears != null">
+        Entry_Years = #{entryYears,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        Tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContact != null">
+        Emergency_Contact = #{emergencyContact,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContactRelations != null">
+        Emergency_Contact_Relations = #{emergencyContactRelations,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContactTel != null">
+        Emergency_Contact_Tel = #{emergencyContactTel,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNumber != null">
+        Bank_Card_Number = #{bankCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="socialInsurance != null">
+        Social_Insurance = #{socialInsurance,jdbcType=VARCHAR},
+      </if>
+      <if test="accumulationFund != null">
+        Accumulation_Fund = #{accumulationFund,jdbcType=VARCHAR},
+      </if>
+      <if test="dateOfCorrection != null">
+        Date_Of_Correction = #{dateOfCorrection,jdbcType=DATE},
+      </if>
+      <if test="daysOfAnnualLeave != null">
+        Days_Of_Annual_Leave = #{daysOfAnnualLeave,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        QQ = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        WeChat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="isActive != null">
+        Is_Active = #{isActive,jdbcType=VARCHAR},
+      </if>
+      <if test="insTime != null">
+        Ins_Time = #{insTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insUser != null">
+        Ins_User = #{insUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updTime != null">
+        Upd_Time = #{updTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updUser != null">
+        Upd_User = #{updUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lt.xinshui.entity.User">
+    update User
+    set Name = #{name,jdbcType=VARCHAR},
+      Sex = #{sex,jdbcType=VARCHAR},
+      ID_Number = #{idNumber,jdbcType=VARCHAR},
+      Date_Of_Birth = #{dateOfBirth,jdbcType=DATE},
+      Age = #{age,jdbcType=VARCHAR},
+      Nation = #{nation,jdbcType=VARCHAR},
+      Marital_Status = #{maritalStatus,jdbcType=VARCHAR},
+      Political_Outlook = #{politicalOutlook,jdbcType=VARCHAR},
+      Education = #{education,jdbcType=VARCHAR},
+      Graduate_School = #{graduateSchool,jdbcType=VARCHAR},
+      Graduation_Time = #{graduationTime,jdbcType=DATE},
+      Registered_Address = #{registeredAddress,jdbcType=VARCHAR},
+      Account_Character = #{accountCharacter,jdbcType=VARCHAR},
+      Entry_Time = #{entryTime,jdbcType=DATE},
+      Entry_Years = #{entryYears,jdbcType=VARCHAR},
+      Tel = #{tel,jdbcType=VARCHAR},
+      Emergency_Contact = #{emergencyContact,jdbcType=VARCHAR},
+      Emergency_Contact_Relations = #{emergencyContactRelations,jdbcType=VARCHAR},
+      Emergency_Contact_Tel = #{emergencyContactTel,jdbcType=VARCHAR},
+      Bank_Card_Number = #{bankCardNumber,jdbcType=VARCHAR},
+      Social_Insurance = #{socialInsurance,jdbcType=VARCHAR},
+      Accumulation_Fund = #{accumulationFund,jdbcType=VARCHAR},
+      Date_Of_Correction = #{dateOfCorrection,jdbcType=DATE},
+      Days_Of_Annual_Leave = #{daysOfAnnualLeave,jdbcType=VARCHAR},
+      QQ = #{qq,jdbcType=VARCHAR},
+      WeChat = #{wechat,jdbcType=VARCHAR},
+      Is_Active = #{isActive,jdbcType=VARCHAR},
+      Ins_Time = #{insTime,jdbcType=TIMESTAMP},
+      Ins_User = #{insUser,jdbcType=VARCHAR},
+      Upd_Time = #{updTime,jdbcType=TIMESTAMP},
+      Upd_User = #{updUser,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="getAllUser" resultMap="BaseResultMap">
+    select * from User where Is_Active = 1
+  </select>
+
+  <select id="getDeletedUser" resultMap="BaseResultMap">
+    select * from User where Is_Active = 0
+  </select>
+</mapper>
