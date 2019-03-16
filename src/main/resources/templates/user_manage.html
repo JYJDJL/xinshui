@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>人员管理</title>
+  <link rel="stylesheet" href="/js/layui/css/layui.css" media="all">
+</head>
+<body>
+
+
+<div class="layui-tab" lay-filter="userTab">
+  <ul class="layui-tab-title">
+    <li class="layui-this" lay-id="normal">在职人员</li>
+    <li lay-id="deleted">已离职人员</li>
+  </ul>
+  <div class="layui-tab-content">
+
+    <div class="layui-tab-item layui-show">
+
+      <table class="layui-hide" id="userTable" lay-filter="userTable"></table>
+
+      <div id="addUserDiv" style="display: none">
+
+        <form id="addUserForm" action="#" lay-filter="addUserForm" class="layui-form">
+
+          <div class="layui-col-sm12">
+
+            <div class="layui-col-sm4">
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="name">名字</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="name" name="name" class="layui-input">
+                  <input id="id" name="id" class="layui-input" style="display: none">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="tel">手机号</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="tel" name="tel" class="layui-input" lay-verify="required|phone" autocomplete="off">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="sex">性别</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <select id="sex" name="sex" class="layui-select">
+                    <option value="1">男</option>
+                    <option value="0">女</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="idNumber">身份证号</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="idNumber" name="idNumber" class="layui-input" lay-verify="identity" autocomplete="off">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="dateOfBirth">生日</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="dateOfBirth" name="dateOfBirth" class="layui-input" placeholder="yyyy-MM-dd">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="age">年龄</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="age" name="age" class="layui-input">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="nation">民族</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="nation" name="nation" class="layui-input" value="汉族">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="maritalStatus">婚姻状况</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <select id="maritalStatus" name="maritalStatus" class="layui-select">
+                    <option value="1">已婚</option>
+                    <option value="0">未婚</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="politicalOutlook">政治面貌</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <select id="politicalOutlook" name="politicalOutlook" class="layui-select">
+                    <option value="1">中共党员</option>
+                    <option value="2">中共预备党员</option>
+                    <option value="3">共青团员</option>
+                    <option value="4">民革党员</option>
+                    <option value="5">民盟盟员</option>
+                    <option value="6">民建会员</option>
+                    <option value="7">民进会员</option>
+                    <option value="8">农工党党员</option>
+                    <option value="9">致公党党员</option>
+                    <option value="10">九三学社社员</option>
+                    <option value="11">台盟盟员</option>
+                    <option value="12">无党派人士</option>
+                    <option value="13">群众</option>
+                  </select>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="layui-col-sm4">
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="education">学历</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <select id="education" name="education" class="layui-select">
+                    <option value="1">小学</option>
+                    <option value="2">初中</option>
+                    <option value="3">中专/高中</option>
+                    <option value="4">专科</option>
+                    <option value="5">本科</option>
+                    <option value="6">硕士研究生</option>
+                    <option value="7">博士研究生</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="entryYears">入职年限</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="entryYears" name="entryYears" class="layui-input">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="emergencyContact">应急联系人</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="emergencyContact" name="emergencyContact" class="layui-input">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="emergencyContactRelations">应急联系人与本人关系</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="emergencyContactRelations" name="emergencyContactRelations" class="layui-input">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="emergencyContactTel">应急联系人电话</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="emergencyContactTel" name="emergencyContactTel" class="layui-input" lay-verify="required|phone" autocomplete="off">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="bankCardNumber">银行卡号</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="bankCardNumber" name="bankCardNumber" class="layui-input">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="socialInsurance">社会保险</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="socialInsurance" name="socialInsurance" class="layui-input">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="accumulationFund">公积金</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="accumulationFund" name="accumulationFund" class="layui-input">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="layui-col-sm4">
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="graduateSchool">毕业学校</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="graduateSchool" name="graduateSchool" class="layui-input">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="graduationTime">毕业时间</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="graduationTime" name="graduationTime" class="layui-input" placeholder="yyyy-MM-dd">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="registeredAddress">户口所在地详细地址</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="registeredAddress" name="registeredAddress" class="layui-input">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="accountCharacter">户口性质</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <select id="accountCharacter" name="accountCharacter" class="layui-select">
+                    <option value="1">农业户口</option>
+                    <option value="0">非农业户口</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="entryTime">入职时间</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="entryTime" name="entryTime" class="layui-input" placeholder="yyyy-MM-dd">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="dateOfCorrection">转正日期</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="dateOfCorrection" name="dateOfCorrection" class="layui-input" placeholder="yyyy-MM-dd">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="daysOfAnnualLeave">年假天数</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="daysOfAnnualLeave" name="daysOfAnnualLeave" class="layui-input">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="qq">qq号</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="qq" name="qq" class="layui-input">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="wechat">微信号</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="wechat" name="wechat" class="layui-input">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="layui-col-sm-offset9" style="display: none">
+              <button class="layui-btn" lay-submit lay-filter="addUserBtn" id="addUserBtn">新增</button>
+              <button class="layui-btn" lay-submit lay-filter="updateUserBtn" id="updateUserBtn">修改</button>
+              <button type="reset" class="layui-btn layui-btn-primary" id="resetUserBtn">重置</button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+    <div class="layui-tab-item">
+      <table class="layui-hide" id="deletedUserTable" lay-filter="deletedUserTable"></table>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!--//表头工具栏-->
+<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+    <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
+    <!--<button class="layui-btn layui-btn-sm" lay-event="delete">删除</button>-->
+    <!--<button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>-->
+  </div>
+</script>
+<!--//列工具栏-->
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+
+<script src="/js/layui/layui.js" charset="utf-8"></script>
+
+<script type="text/javascript"  th:inline="none">
+  layui.use(['table','layer','jquery','laydate','form','element'], function(){
+    var table = layui.table;
+    var layer = layui.layer;
+    var $ = layui.jquery;
+    var form = layui.form;
+    var element = layui.element;
+    var laydate = layui.laydate;
+
+    /**
+     * 监控标签页切换
+     */
+    element.on('tab(userTab)', function(){
+      var layId = this.getAttribute('lay-id');
+      if(layId === "normal"){
+        table.reload("userTable");
+      }else if(layId === "deleted"){
+        table.reload("deletedUserTable");
+      }
+    });
+
+
+    //出生日期
+    laydate.render({
+      elem: '#dateOfBirth'
+    });
+    //毕业时间
+    laydate.render({
+      elem: '#graduationTime'
+    });
+    //入职时间
+    laydate.render({
+      elem: '#entryTime'
+    });
+    //转正日期
+    laydate.render({
+      elem: '#dateOfCorrection'
+    });
+
+    //提交新增表单
+    form.on('submit(addUserBtn)', function(data){
+      var url = "/userCtrl/insertUser";
+      var condition = data.field;
+      var conditionStr = JSON.stringify(condition);
+
+      $.post(url,{"conditionStr":conditionStr},function (res) {
+          if(res.code === "0"){
+            layer.alert("新增成功！",function () {
+              layer.closeAll();
+              table.reload("userTable");
+            });
+          }
+
+      });
+      return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+    });
+
+    //提交修改表单
+    form.on('submit(updateUserBtn)', function(data){
+      var url = "/userCtrl/updateUser";
+      var condition = data.field;
+      var conditionStr = JSON.stringify(condition);
+
+      $.post(url,{"conditionStr":conditionStr},function (res) {
+        if(res.code === "0"){
+          layer.alert("修改成功！",function () {
+            layer.closeAll();
+            table.reload("userTable");
+          });
+        }
+
+      });
+      return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+    });
+
+
+
+
+    table.render({
+      elem: '#userTable'
+      ,toolbar: '#toolbarDemo'
+      ,url:'/userCtrl/getAllUser'
+      ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+      ,page:true
+      ,cols: [[
+        {field:'id', title: 'ID', hide:true}
+        ,{fixed: 'left', width:120, align:'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
+        ,{field:'name', width:80, title: '姓名'}
+        ,{field:'tel', width:120, title: '手机号', sort: true}
+        ,{field:'sex', width:80, title: '性别', sort: true}
+        ,{field:'idNumber', width:180, title: '身份证号'}
+        ,{field:'dateOfBirth', width:130, title: '生日', sort: true} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+        ,{field:'age', width:80, title: '年龄', sort: true}
+        ,{field:'nation', width:80, title: '民族', sort: true}
+        ,{field:'maritalStatus', width:100, title: '婚姻状况', sort: true}
+        ,{field:'politicalOutlook', width:100, title: '政治面貌', sort: true}
+        ,{field:'education', width:80, title: '学历', sort: true}
+        ,{field:'graduateSchool', width:120, title: '毕业学校', sort: true}
+        ,{field:'graduationTime', width:120, title: '毕业时间', sort: true}
+        ,{field:'registeredAddress', width:180, title: '户口所在地详细地址', sort: true}
+        ,{field:'accountCharacter', width:100, title: '户口性质', sort: true}
+        ,{field:'entryTime', width:120, title: '入职时间', sort: true}
+        ,{field:'entryYears', width:100, title: '入职年限', sort: true}
+        ,{field:'emergencyContact', width:110, title: '应急联系人', sort: true}
+        ,{field:'emergencyContactRelations', width:180, title: '应急联系人与本人关系', sort: true}
+        ,{field:'emergencyContactTel', width:140, title: '应急联系人电话', sort: true}
+        ,{field:'bankCardNumber', width:120, title: '银行卡号', sort: true}
+        ,{field:'socialInsurance', width:100, title: '社会保险', sort: true}
+        ,{field:'accumulationFund', width:80, title: '公积金', sort: true}
+        ,{field:'dateOfCorrection', width:120, title: '转正日期', sort: true}
+        ,{field:'daysOfAnnualLeave', width:100, title: '年假天数', sort: true}
+        ,{field:'qq', width:120, title: 'qq号', sort: true}
+        ,{field:'wechat', width:120, title: '微信号', sort: true}
+      ]]
+    });
+
+    table.render({
+      elem: '#deletedUserTable'
+      ,url:'/userCtrl/getDeletedUser'
+      ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+      ,cols: [[
+        {field:'id', title: 'ID', hide:true}
+        ,{field:'name', width:80, title: '姓名'}
+        ,{field:'tel', width:120, title: '手机号', sort: true}
+        ,{field:'sex', width:80, title: '性别', sort: true}
+        ,{field:'idNumber', width:180, title: '身份证号'}
+        ,{field:'dateOfBirth', width:130, title: '生日', sort: true} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+        ,{field:'age', width:80, title: '年龄', sort: true}
+        ,{field:'nation', width:80, title: '民族', sort: true}
+        ,{field:'maritalStatus', width:100, title: '婚姻状况', sort: true}
+        ,{field:'politicalOutlook', width:100, title: '政治面貌', sort: true}
+        ,{field:'education', width:80, title: '学历', sort: true}
+        ,{field:'graduateSchool', width:120, title: '毕业学校', sort: true}
+        ,{field:'graduationTime', width:120, title: '毕业时间', sort: true}
+        ,{field:'registeredAddress', width:180, title: '户口所在地详细地址', sort: true}
+        ,{field:'accountCharacter', width:100, title: '户口性质', sort: true}
+        ,{field:'entryTime', width:120, title: '入职时间', sort: true}
+        ,{field:'entryYears', width:100, title: '入职年限', sort: true}
+        ,{field:'emergencyContact', width:110, title: '应急联系人', sort: true}
+        ,{field:'emergencyContactRelations', width:180, title: '应急联系人与本人关系', sort: true}
+        ,{field:'emergencyContactTel', width:140, title: '应急联系人电话', sort: true}
+        ,{field:'bankCardNumber', width:120, title: '银行卡号', sort: true}
+        ,{field:'socialInsurance', width:100, title: '社会保险', sort: true}
+        ,{field:'accumulationFund', width:80, title: '公积金', sort: true}
+        ,{field:'dateOfCorrection', width:120, title: '转正日期', sort: true}
+        ,{field:'daysOfAnnualLeave', width:100, title: '年假天数', sort: true}
+        ,{field:'qq', width:120, title: 'qq号', sort: true}
+        ,{field:'wechat', width:120, title: '微信号', sort: true}
+      ]]
+    });
+
+    /**
+     * 表头工具栏
+     */
+    table.on('toolbar(userTable)', function(obj){
+      var checkStatus = table.checkStatus(obj.config.id);
+      if(obj.event === "add"){
+        layer.open({
+          type: 1,
+          title:"添加人员",
+          area:["1500px","640px"],
+          content: $("#addUserDiv"),
+          btn:["新增","重置","取消"],
+          btn1:function () {
+              $("#addUserBtn").click();
+          },
+          btn2:function () {
+            $("#resetUserBtn").click();
+            return false;
+          }
+
+        });
+      }
+      // else if(obj.event === "delete"){
+      //
+      // }else if(obj.event === "update"){
+      //
+      // }
+    });
+
+
+    //列工具栏
+    table.on('tool(userTable)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+      var data = obj.data; //获得当前行数据
+      var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+      var tr = obj.tr; //获得当前行 tr 的DOM对象
+
+      // if(layEvent === 'detail'){ //查看
+      //
+      //
+      // } else
+
+        if(layEvent === 'del'){ //删除
+        layer.confirm('真的删除行么', function(index){
+          obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+          layer.close(index);
+          //向服务端发送删除指令
+        });
+      } else if(layEvent === 'edit'){ //编辑
+        layer.open({
+          type:1,
+          title:"修改",
+          area:["1500px","640px"],
+          content: $("#addUserDiv"),
+          btn:["确认修改","取消"],
+          success:function () {
+            var url = '/userCtrl/getUser';
+            var condition = {};
+            condition.id = data.id;
+            var conditionStr = JSON.stringify(condition);
+            $.post(url,{"conditionStr":conditionStr},function (res) {
+              form.val("addUserForm",res.data);
+            })
+          },
+          btn1:function () {
+            $("#updateUserBtn").click();
+          }
+        });
+        //同步更新缓存对应的值
+        obj.update({
+          username: '123'
+          ,title: 'xxx'
+        });
+      }
+    });
+
+
+
+
+  });
+</script>
+</body>
+</html>
