@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>备用金管理</title>
+  <link rel="stylesheet" href="/js/layui/css/layui.css" media="all">
+</head>
+<body>
+<table class="layui-hide" id="reserveFundTable" lay-filter="reserveFundTable"></table>
+
+
+<div id="addReserveFundDiv" style="display: none">
+
+  <form id="addReserveFundForm" action="#" lay-filter="addReserveFundForm" class="layui-form">
+
+    <div class="layui-col-sm12">
+
+      <div class="layui-col-sm4">
+
+        <div class="layui-col-sm12 layui-form-item">
+          <div class="layui-col-sm4">
+            <label class="layui-form-label" for="time">时间</label>
+          </div>
+          <div class="layui-col-sm7">
+            <input id="time" name="time" class="layui-input">
+            <input id="id" name="id" class="layui-input" style="display: none">
+          </div>
+        </div>
+        <div class="layui-col-sm12 layui-form-item">
+          <div class="layui-col-sm4">
+            <label class="layui-form-label" for="experiencedPerson">经手人</label>
+          </div>
+          <div class="layui-col-sm7">
+            <input id="experiencedPerson" name="experiencedPerson" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-col-sm12 layui-form-item">
+          <div class="layui-col-sm4">
+            <label class="layui-form-label" for="type">类型</label>
+          </div>
+          <div class="layui-col-sm7">
+            <select id="type" name="type" class="layui-input"></select>
+          </div>
+        </div>
+
+      </div>
+      <div class="layui-col-sm4">
+
+        <div class="layui-col-sm12 layui-form-item">
+          <div class="layui-col-sm4">
+            <label class="layui-form-label" for="amount">金额</label>
+          </div>
+          <div class="layui-col-sm7">
+            <input id="amount" name="amount" class="layui-input"/>
+          </div>
+        </div>
+        <div class="layui-col-sm12 layui-form-item">
+          <div class="layui-col-sm4">
+            <label class="layui-form-label" for="inouttype">收支类型</label>
+          </div>
+          <div class="layui-col-sm7">
+            <select id="inouttype" name="inouttype" class="layui-select">
+              <option value="1">收入</option>
+              <option value="2">支出</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-col-sm12 layui-form-item">
+          <div class="layui-col-sm4">
+            <label class="layui-form-label" for="remark">备注说明</label>
+          </div>
+          <div class="layui-col-sm7">
+            <input id="remark" name="remark" class="layui-input"/>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="layui-col-sm4">
+
+        <div class="layui-col-sm12 layui-form-item">
+          <div class="layui-col-sm4">
+            <label class="layui-form-label" for="voucher">凭证</label>
+          </div>
+          <div class="layui-col-sm7">
+            <input id="voucher" name="voucher" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-col-sm12 layui-form-item">
+          <div class="layui-col-sm4">
+            <label class="layui-form-label" for="hasInvoice">有无发票</label>
+          </div>
+          <div class="layui-col-sm7">
+            <select id="hasInvoice" name="hasInvoice" class="layui-input">
+              <option value="1">有</option>
+              <option value="0">无</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="layui-col-sm-offset9" style="display: none">
+        <button class="layui-btn" lay-submit lay-filter="addReserveFundBtn" id="addReserveFundBtn">新增</button>
+        <button class="layui-btn" lay-submit lay-filter="updateReserveFundBtn" id="updateReserveFundBtn">修改</button>
+        <button type="reset" class="layui-btn layui-btn-primary" id="resetReserveFundBtn">重置</button>
+      </div>
+    </div>
+
+  </form>
+
+</div>
+
+
+<script src="/js/layui/layui.js" charset="utf-8"></script>
+<!--//表头工具栏-->
+<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+    <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
+  </div>
+</script>
+
+<!--//列工具栏-->
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script type="text/javascript"  th:inline="none">
+  layui.use(['table','layer','jquery','laydate','form','element'], function(){
+    var table = layui.table;
+    var layer = layui.layer;
+    var $ = layui.jquery;
+    var form = layui.form;
+    var element = layui.element;
+    var laydate = layui.laydate;
+
+    //时间
+    laydate.render({
+      elem: '#time'
+    });
+
+    //提交新增表单
+    form.on('submit(addReserveFundBtn)', function(data){
+      var url = "/reserveFundCtrl/insertReserveFund";
+      var condition = data.field;
+      var conditionStr = JSON.stringify(condition);
+
+      $.post(url,{"conditionStr":conditionStr},function (res) {
+        if(res.code === "0"){
+          layer.alert("新增成功！",function () {
+            layer.closeAll();
+            table.reload("reserveFundTable");
+          });
+        }
+
+      });
+      return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+    });
+
+    table.render({
+      elem: '#reserveFundTable'
+      ,toolbar: '#toolbarDemo'
+      ,url:'/reserveFundCtrl/getReserveFund'
+      ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+      ,page:true
+      ,cols: [[
+        {field:'id', title: 'ID', hide:true}
+        ,{fixed: 'left', width:120, align:'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
+        ,{field:'time', width:100, title: '时间', sort: true}
+        ,{field:'experiencedPerson', width:80, title: '经手人', sort: true}
+        ,{field:'type', width:120, title: '类型', sort: true}
+        ,{field:'amount', width:100, title: '金额', sort: true}
+        ,{field:'inouttype', width:120, title: '收支类型', sort: true}
+        ,{field:'remark', width:120, title: '备注说明', sort: true}
+        ,{field:'voucher', width:120, title: '凭证', sort: true}
+        ,{field:'hasInvoice', width:120, title: '有无发票', sort: true}
+      ]]
+    });
+
+
+    /**
+     * 表头工具栏
+     */
+    table.on('toolbar(reserveFundTable)', function(obj){
+      var checkStatus = table.checkStatus(obj.config.id);
+      if(obj.event === "add"){
+        layer.open({
+          type: 1,
+          title:"添加",
+          area:["1500px","640px"],
+          content: $("#addReserveFundDiv"),
+          btn:["新增","重置","取消"],
+          btn1:function () {
+            $("#addReserveFundBtn").click();
+          },
+          btn2:function () {
+            $("#resetReserveFundBtn").click();
+            return false;
+          }
+
+        });
+      }
+    });
+  })
+</script>
+</body>
+</html>

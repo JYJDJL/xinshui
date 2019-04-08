@@ -59,7 +59,7 @@
       <property name="enableSubPackages" value="false" />
     </javaClientGenerator>
     <!-- 指定数据库表 -->
-    <table tableName="User" domainObjectName="User"
+    <table tableName="Reserve_Fund_Type" domainObjectName="ReserveFundType"
       enableCountByExample="false"
       enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
       selectByExampleQueryId="false"/>
