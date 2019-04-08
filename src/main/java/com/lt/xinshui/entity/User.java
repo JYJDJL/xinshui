@@ -14,6 +14,11 @@ public class User {
     private String name;
 
     /**
+     * 手机号
+     */
+    private String tel;
+
+    /**
      * 性别
      */
     private String sex;
@@ -74,6 +79,31 @@ public class User {
     private String accountCharacter;
 
     /**
+     * 现住址
+     */
+    private String presentAddress;
+
+    /**
+     * 家庭电话
+     */
+    private String homePhone;
+
+    /**
+     * 培训经历
+     */
+    private String trainingExperience;
+
+    /**
+     * 专业资格证书
+     */
+    private String qualification;
+
+    /**
+     * 主要工作经历
+     */
+    private String workExperience;
+
+    /**
      * 入职时间
      */
     private Date entryTime;
@@ -82,11 +112,6 @@ public class User {
      * 入职年限
      */
     private String entryYears;
-
-    /**
-     * 手机号
-     */
-    private String tel;
 
     /**
      * 应急联系人
@@ -193,6 +218,22 @@ public class User {
      */
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    /**
+     * 手机号
+     * 
+     */
+    public String getTel() {
+        return tel;
+    }
+
+    /**
+     * 手机号
+     * 
+     */
+    public void setTel(String tel) {
+        this.tel = tel == null ? null : tel.trim();
     }
 
     /**
@@ -388,6 +429,86 @@ public class User {
     }
 
     /**
+     * 现住址
+     * 
+     */
+    public String getPresentAddress() {
+        return presentAddress;
+    }
+
+    /**
+     * 现住址
+     * 
+     */
+    public void setPresentAddress(String presentAddress) {
+        this.presentAddress = presentAddress == null ? null : presentAddress.trim();
+    }
+
+    /**
+     * 家庭电话
+     * 
+     */
+    public String getHomePhone() {
+        return homePhone;
+    }
+
+    /**
+     * 家庭电话
+     * 
+     */
+    public void setHomePhone(String homePhone) {
+        this.homePhone = homePhone == null ? null : homePhone.trim();
+    }
+
+    /**
+     * 培训经历
+     * 
+     */
+    public String getTrainingExperience() {
+        return trainingExperience;
+    }
+
+    /**
+     * 培训经历
+     * 
+     */
+    public void setTrainingExperience(String trainingExperience) {
+        this.trainingExperience = trainingExperience == null ? null : trainingExperience.trim();
+    }
+
+    /**
+     * 专业资格证书
+     * 
+     */
+    public String getQualification() {
+        return qualification;
+    }
+
+    /**
+     * 专业资格证书
+     * 
+     */
+    public void setQualification(String qualification) {
+        this.qualification = qualification == null ? null : qualification.trim();
+    }
+
+    /**
+     * 主要工作经历
+     * 
+     */
+    public String getWorkExperience() {
+        return workExperience;
+    }
+
+    /**
+     * 主要工作经历
+     * 
+     */
+    public void setWorkExperience(String workExperience) {
+        this.workExperience = workExperience == null ? null : workExperience.trim();
+    }
+
+    /**
      * 入职时间
      * 
      */
@@ -417,22 +538,6 @@ public class User {
      */
     public void setEntryYears(String entryYears) {
         this.entryYears = entryYears == null ? null : entryYears.trim();
-    }
-
-    /**
-     * 手机号
-     * 
-     */
-    public String getTel() {
-        return tel;
-    }
-
-    /**
-     * 手机号
-     * 
-     */
-    public void setTel(String tel) {
-        this.tel = tel == null ? null : tel.trim();
     }
 
     /**

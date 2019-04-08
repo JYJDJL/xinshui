@@ -80,4 +80,15 @@ public class UserServiceImpl implements UserService {
         myResponseModel.setMsg("success");
         return myResponseModel;
     }
+
+    @Override
+    public MyResponseModel deleteUser(User user) {
+        int i = this.userMapper.deleteUserById(user.getId());
+        MyResponseModel myResponseModel = new MyResponseModel();
+        if(i > 0){
+            myResponseModel.setCode("0");
+        }
+
+        return myResponseModel;
+    }
 }

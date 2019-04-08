@@ -14,4 +14,6 @@ public interface UserService {
     MyResponseModel updateUser(User user);
 
     MyResponseModel getDeletedUser(Integer page, Integer limit);
+
+    MyResponseModel deleteUser(User user);
 }

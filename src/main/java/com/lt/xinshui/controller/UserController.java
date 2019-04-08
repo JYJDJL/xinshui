@@ -80,6 +80,18 @@ public class UserController {
         return this.userService.updateUser(user);
     }
 
+    /**
+     * 修改人员信息
+     */
+    @RequestMapping(value = "deleteUser")
+    @ResponseBody
+    public MyResponseModel deleteUser(String conditionStr){
+        User user = JSON.parseObject(conditionStr,User.class);
+
+        return this.userService.deleteUser(user);
+    }
+
+
 
 
 

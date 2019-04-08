@@ -290,7 +290,9 @@ public class MyCommentGenerator implements CommentGenerator{
         try {
             List<String> warnings = new ArrayList<String>();
             boolean overwrite = true;
-            File configFile = new File("D:\\test_workspace\\xinshui\\src\\main\\resources\\generator\\generatorConfig.xml");
+            File configFile = new File("F:\\2019年3月16日workspace\\xinshui\\src\\main\\resources\\generator" +
+                    "\\generatorConfig" +
+                    ".xml");
             ConfigurationParser cp = new ConfigurationParser(warnings);
             Configuration config = cp.parseConfiguration(configFile);
             DefaultShellCallback callback = new DefaultShellCallback(overwrite);

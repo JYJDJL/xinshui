@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.lt.xinshui.entity.User">
     <id column="Id" jdbcType="INTEGER" property="id" />
     <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Tel" jdbcType="VARCHAR" property="tel" />
     <result column="Sex" jdbcType="VARCHAR" property="sex" />
     <result column="ID_Number" jdbcType="VARCHAR" property="idNumber" />
     <result column="Date_Of_Birth" jdbcType="DATE" property="dateOfBirth" />
@@ -16,9 +17,13 @@
     <result column="Graduation_Time" jdbcType="DATE" property="graduationTime" />
     <result column="Registered_Address" jdbcType="VARCHAR" property="registeredAddress" />
     <result column="Account_Character" jdbcType="VARCHAR" property="accountCharacter" />
+    <result column="Present_Address" jdbcType="VARCHAR" property="presentAddress" />
+    <result column="Home_Phone" jdbcType="VARCHAR" property="homePhone" />
+    <result column="Training_Experience" jdbcType="VARCHAR" property="trainingExperience" />
+    <result column="Qualification" jdbcType="VARCHAR" property="qualification" />
+    <result column="Work_Experience" jdbcType="VARCHAR" property="workExperience" />
     <result column="Entry_Time" jdbcType="DATE" property="entryTime" />
     <result column="Entry_Years" jdbcType="VARCHAR" property="entryYears" />
-    <result column="Tel" jdbcType="VARCHAR" property="tel" />
     <result column="Emergency_Contact" jdbcType="VARCHAR" property="emergencyContact" />
     <result column="Emergency_Contact_Relations" jdbcType="VARCHAR" property="emergencyContactRelations" />
     <result column="Emergency_Contact_Tel" jdbcType="VARCHAR" property="emergencyContactTel" />
@@ -36,9 +41,10 @@
     <result column="Upd_User" jdbcType="VARCHAR" property="updUser" />
   </resultMap>
   <sql id="Base_Column_List">
-    Id, Name, Sex, ID_Number, Date_Of_Birth, Age, Nation, Marital_Status, Political_Outlook, 
+    Id, Name, Tel, Sex, ID_Number, Date_Of_Birth, Age, Nation, Marital_Status, Political_Outlook, 
     Education, Graduate_School, Graduation_Time, Registered_Address, Account_Character, 
-    Entry_Time, Entry_Years, Tel, Emergency_Contact, Emergency_Contact_Relations, Emergency_Contact_Tel, 
+    Present_Address, Home_Phone, Training_Experience, Qualification, Work_Experience, 
+    Entry_Time, Entry_Years, Emergency_Contact, Emergency_Contact_Relations, Emergency_Contact_Tel, 
     Bank_Card_Number, Social_Insurance, Accumulation_Fund, Date_Of_Correction, Days_Of_Annual_Leave, 
     QQ, WeChat, Is_Active, Ins_Time, Ins_User, Upd_Time, Upd_User
   </sql>
@@ -53,30 +59,32 @@
     where Id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.lt.xinshui.entity.User">
-    insert into User (Id, Name, Sex, 
-      ID_Number, Date_Of_Birth, Age, 
-      Nation, Marital_Status, Political_Outlook, 
-      Education, Graduate_School, Graduation_Time, 
-      Registered_Address, Account_Character, Entry_Time, 
-      Entry_Years, Tel, Emergency_Contact, 
-      Emergency_Contact_Relations, Emergency_Contact_Tel, 
-      Bank_Card_Number, Social_Insurance, Accumulation_Fund, 
-      Date_Of_Correction, Days_Of_Annual_Leave, QQ, 
-      WeChat, Is_Active, Ins_Time, 
-      Ins_User, Upd_Time, Upd_User
-      )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
-      #{idNumber,jdbcType=VARCHAR}, #{dateOfBirth,jdbcType=DATE}, #{age,jdbcType=VARCHAR}, 
-      #{nation,jdbcType=VARCHAR}, #{maritalStatus,jdbcType=VARCHAR}, #{politicalOutlook,jdbcType=VARCHAR}, 
-      #{education,jdbcType=VARCHAR}, #{graduateSchool,jdbcType=VARCHAR}, #{graduationTime,jdbcType=DATE}, 
-      #{registeredAddress,jdbcType=VARCHAR}, #{accountCharacter,jdbcType=VARCHAR}, #{entryTime,jdbcType=DATE}, 
-      #{entryYears,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{emergencyContact,jdbcType=VARCHAR}, 
-      #{emergencyContactRelations,jdbcType=VARCHAR}, #{emergencyContactTel,jdbcType=VARCHAR}, 
-      #{bankCardNumber,jdbcType=VARCHAR}, #{socialInsurance,jdbcType=VARCHAR}, #{accumulationFund,jdbcType=VARCHAR}, 
-      #{dateOfCorrection,jdbcType=DATE}, #{daysOfAnnualLeave,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, 
-      #{wechat,jdbcType=VARCHAR}, #{isActive,jdbcType=VARCHAR}, #{insTime,jdbcType=TIMESTAMP}, 
-      #{insUser,jdbcType=VARCHAR}, #{updTime,jdbcType=TIMESTAMP}, #{updUser,jdbcType=VARCHAR}
-      )
+    insert into User (Id, Name, Tel, 
+      Sex, ID_Number, Date_Of_Birth, 
+      Age, Nation, Marital_Status, 
+      Political_Outlook, Education, Graduate_School, 
+      Graduation_Time, Registered_Address, Account_Character, 
+      Present_Address, Home_Phone, Training_Experience, 
+      Qualification, Work_Experience, Entry_Time, 
+      Entry_Years, Emergency_Contact, Emergency_Contact_Relations, 
+      Emergency_Contact_Tel, Bank_Card_Number, Social_Insurance, 
+      Accumulation_Fund, Date_Of_Correction, Days_Of_Annual_Leave, 
+      QQ, WeChat, Is_Active, 
+      Ins_Time, Ins_User, Upd_Time, 
+      Upd_User)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{idNumber,jdbcType=VARCHAR}, #{dateOfBirth,jdbcType=DATE}, 
+      #{age,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, #{maritalStatus,jdbcType=VARCHAR}, 
+      #{politicalOutlook,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, #{graduateSchool,jdbcType=VARCHAR}, 
+      #{graduationTime,jdbcType=DATE}, #{registeredAddress,jdbcType=VARCHAR}, #{accountCharacter,jdbcType=VARCHAR}, 
+      #{presentAddress,jdbcType=VARCHAR}, #{homePhone,jdbcType=VARCHAR}, #{trainingExperience,jdbcType=VARCHAR}, 
+      #{qualification,jdbcType=VARCHAR}, #{workExperience,jdbcType=VARCHAR}, #{entryTime,jdbcType=DATE}, 
+      #{entryYears,jdbcType=VARCHAR}, #{emergencyContact,jdbcType=VARCHAR}, #{emergencyContactRelations,jdbcType=VARCHAR}, 
+      #{emergencyContactTel,jdbcType=VARCHAR}, #{bankCardNumber,jdbcType=VARCHAR}, #{socialInsurance,jdbcType=VARCHAR}, 
+      #{accumulationFund,jdbcType=VARCHAR}, #{dateOfCorrection,jdbcType=DATE}, #{daysOfAnnualLeave,jdbcType=VARCHAR}, 
+      #{qq,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, #{isActive,jdbcType=VARCHAR}, 
+      #{insTime,jdbcType=TIMESTAMP}, #{insUser,jdbcType=VARCHAR}, #{updTime,jdbcType=TIMESTAMP}, 
+      #{updUser,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lt.xinshui.entity.User">
     insert into User
@@ -86,6 +94,9 @@
       </if>
       <if test="name != null">
         Name,
+      </if>
+      <if test="tel != null">
+        Tel,
       </if>
       <if test="sex != null">
         Sex,
@@ -123,14 +134,26 @@
       <if test="accountCharacter != null">
         Account_Character,
       </if>
+      <if test="presentAddress != null">
+        Present_Address,
+      </if>
+      <if test="homePhone != null">
+        Home_Phone,
+      </if>
+      <if test="trainingExperience != null">
+        Training_Experience,
+      </if>
+      <if test="qualification != null">
+        Qualification,
+      </if>
+      <if test="workExperience != null">
+        Work_Experience,
+      </if>
       <if test="entryTime != null">
         Entry_Time,
       </if>
       <if test="entryYears != null">
         Entry_Years,
-      </if>
-      <if test="tel != null">
-        Tel,
       </if>
       <if test="emergencyContact != null">
         Emergency_Contact,
@@ -185,6 +208,9 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
       <if test="sex != null">
         #{sex,jdbcType=VARCHAR},
       </if>
@@ -221,14 +247,26 @@
       <if test="accountCharacter != null">
         #{accountCharacter,jdbcType=VARCHAR},
       </if>
+      <if test="presentAddress != null">
+        #{presentAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="homePhone != null">
+        #{homePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="trainingExperience != null">
+        #{trainingExperience,jdbcType=VARCHAR},
+      </if>
+      <if test="qualification != null">
+        #{qualification,jdbcType=VARCHAR},
+      </if>
+      <if test="workExperience != null">
+        #{workExperience,jdbcType=VARCHAR},
+      </if>
       <if test="entryTime != null">
         #{entryTime,jdbcType=DATE},
       </if>
       <if test="entryYears != null">
         #{entryYears,jdbcType=VARCHAR},
-      </if>
-      <if test="tel != null">
-        #{tel,jdbcType=VARCHAR},
       </if>
       <if test="emergencyContact != null">
         #{emergencyContact,jdbcType=VARCHAR},
@@ -283,6 +321,9 @@
       <if test="name != null">
         Name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="tel != null">
+        Tel = #{tel,jdbcType=VARCHAR},
+      </if>
       <if test="sex != null">
         Sex = #{sex,jdbcType=VARCHAR},
       </if>
@@ -319,14 +360,26 @@
       <if test="accountCharacter != null">
         Account_Character = #{accountCharacter,jdbcType=VARCHAR},
       </if>
+      <if test="presentAddress != null">
+        Present_Address = #{presentAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="homePhone != null">
+        Home_Phone = #{homePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="trainingExperience != null">
+        Training_Experience = #{trainingExperience,jdbcType=VARCHAR},
+      </if>
+      <if test="qualification != null">
+        Qualification = #{qualification,jdbcType=VARCHAR},
+      </if>
+      <if test="workExperience != null">
+        Work_Experience = #{workExperience,jdbcType=VARCHAR},
+      </if>
       <if test="entryTime != null">
         Entry_Time = #{entryTime,jdbcType=DATE},
       </if>
       <if test="entryYears != null">
         Entry_Years = #{entryYears,jdbcType=VARCHAR},
-      </if>
-      <if test="tel != null">
-        Tel = #{tel,jdbcType=VARCHAR},
       </if>
       <if test="emergencyContact != null">
         Emergency_Contact = #{emergencyContact,jdbcType=VARCHAR},
@@ -379,6 +432,7 @@
   <update id="updateByPrimaryKey" parameterType="com.lt.xinshui.entity.User">
     update User
     set Name = #{name,jdbcType=VARCHAR},
+      Tel = #{tel,jdbcType=VARCHAR},
       Sex = #{sex,jdbcType=VARCHAR},
       ID_Number = #{idNumber,jdbcType=VARCHAR},
       Date_Of_Birth = #{dateOfBirth,jdbcType=DATE},
@@ -391,9 +445,13 @@
       Graduation_Time = #{graduationTime,jdbcType=DATE},
       Registered_Address = #{registeredAddress,jdbcType=VARCHAR},
       Account_Character = #{accountCharacter,jdbcType=VARCHAR},
+      Present_Address = #{presentAddress,jdbcType=VARCHAR},
+      Home_Phone = #{homePhone,jdbcType=VARCHAR},
+      Training_Experience = #{trainingExperience,jdbcType=VARCHAR},
+      Qualification = #{qualification,jdbcType=VARCHAR},
+      Work_Experience = #{workExperience,jdbcType=VARCHAR},
       Entry_Time = #{entryTime,jdbcType=DATE},
       Entry_Years = #{entryYears,jdbcType=VARCHAR},
-      Tel = #{tel,jdbcType=VARCHAR},
       Emergency_Contact = #{emergencyContact,jdbcType=VARCHAR},
       Emergency_Contact_Relations = #{emergencyContactRelations,jdbcType=VARCHAR},
       Emergency_Contact_Tel = #{emergencyContactTel,jdbcType=VARCHAR},
@@ -420,4 +478,9 @@
   <select id="getDeletedUser" resultMap="BaseResultMap">
     select * from User where Is_Active = 0
   </select>
+
+  <delete id="deleteUserById" parameterType="java.lang.Integer">
+          update User set Is_Active = 0 where id = #{id}
+  </delete>
+
 </mapper>

@@ -42,7 +42,16 @@
                   <label class="layui-form-label" for="tel">手机号</label>
                 </div>
                 <div class="layui-col-sm7">
-                  <input id="tel" name="tel" class="layui-input" lay-verify="required|phone" autocomplete="off">
+                  <input id="tel" name="tel" class="layui-input" lay-verify="phone" autocomplete="off">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="idNumber">身份证号</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="idNumber" name="idNumber" class="layui-input" lay-verify="identity" autocomplete="off">
                 </div>
               </div>
 
@@ -55,15 +64,6 @@
                     <option value="1">男</option>
                     <option value="0">女</option>
                   </select>
-                </div>
-              </div>
-
-              <div class="layui-col-sm12 layui-form-item">
-                <div class="layui-col-sm4">
-                  <label class="layui-form-label" for="idNumber">身份证号</label>
-                </div>
-                <div class="layui-col-sm7">
-                  <input id="idNumber" name="idNumber" class="layui-input" lay-verify="identity" autocomplete="off">
                 </div>
               </div>
 
@@ -82,27 +82,6 @@
                 </div>
                 <div class="layui-col-sm7">
                   <input id="age" name="age" class="layui-input">
-                </div>
-              </div>
-
-              <div class="layui-col-sm12 layui-form-item">
-                <div class="layui-col-sm4">
-                  <label class="layui-form-label" for="nation">民族</label>
-                </div>
-                <div class="layui-col-sm7">
-                  <input id="nation" name="nation" class="layui-input" value="汉族">
-                </div>
-              </div>
-
-              <div class="layui-col-sm12 layui-form-item">
-                <div class="layui-col-sm4">
-                  <label class="layui-form-label" for="maritalStatus">婚姻状况</label>
-                </div>
-                <div class="layui-col-sm7">
-                  <select id="maritalStatus" name="maritalStatus" class="layui-select">
-                    <option value="1">已婚</option>
-                    <option value="0">未婚</option>
-                  </select>
                 </div>
               </div>
 
@@ -129,9 +108,26 @@
                 </div>
               </div>
 
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="nation">民族</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="nation" name="nation" class="layui-input" value="汉族">
+                </div>
+              </div>
 
-            </div>
-            <div class="layui-col-sm4">
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="maritalStatus">婚姻状况</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <select id="maritalStatus" name="maritalStatus" class="layui-select">
+                    <option value="1">已婚</option>
+                    <option value="0">未婚</option>
+                  </select>
+                </div>
+              </div>
 
               <div class="layui-col-sm12 layui-form-item">
                 <div class="layui-col-sm4">
@@ -141,11 +137,12 @@
                   <select id="education" name="education" class="layui-select">
                     <option value="1">小学</option>
                     <option value="2">初中</option>
-                    <option value="3">中专/高中</option>
-                    <option value="4">专科</option>
-                    <option value="5">本科</option>
-                    <option value="6">硕士研究生</option>
-                    <option value="7">博士研究生</option>
+                    <option value="3">中专</option>
+                    <option value="4">高中</option>
+                    <option value="5">大专</option>
+                    <option value="6">本科</option>
+                    <option value="7">硕士研究生</option>
+                    <option value="8">博士研究生</option>
                   </select>
                 </div>
               </div>
@@ -158,6 +155,9 @@
                   <input id="entryYears" name="entryYears" class="layui-input">
                 </div>
               </div>
+
+            </div>
+            <div class="layui-col-sm4">
 
               <div class="layui-col-sm12 layui-form-item">
                 <div class="layui-col-sm4">
@@ -182,7 +182,7 @@
                   <label class="layui-form-label" for="emergencyContactTel">应急联系人电话</label>
                 </div>
                 <div class="layui-col-sm7">
-                  <input id="emergencyContactTel" name="emergencyContactTel" class="layui-input" lay-verify="required|phone" autocomplete="off">
+                  <input id="emergencyContactTel" name="emergencyContactTel" class="layui-input" lay-verify="phone" autocomplete="off">
                 </div>
               </div>
 
@@ -213,9 +213,6 @@
                 </div>
               </div>
 
-            </div>
-
-            <div class="layui-col-sm4">
               <div class="layui-col-sm12 layui-form-item">
                 <div class="layui-col-sm4">
                   <label class="layui-form-label" for="graduateSchool">毕业学校</label>
@@ -240,6 +237,56 @@
                 </div>
                 <div class="layui-col-sm7">
                   <input id="registeredAddress" name="registeredAddress" class="layui-input">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="homePhone">家庭电话</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="homePhone" name="homePhone" class="layui-input">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="layui-col-sm4">
+
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="presentAddress">现住址</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="presentAddress" name="presentAddress" class="layui-input">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="trainingExperience">培训经历</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="trainingExperience" name="trainingExperience" class="layui-input">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="qualification">专业资格证书</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="qualification" name="qualification" class="layui-input">
+                </div>
+              </div>
+
+              <div class="layui-col-sm12 layui-form-item">
+                <div class="layui-col-sm4">
+                  <label class="layui-form-label" for="workExperience">主要工作经历</label>
+                </div>
+                <div class="layui-col-sm7">
+                  <input id="workExperience" name="workExperience" class="layui-input">
                 </div>
               </div>
 
@@ -415,7 +462,34 @@
       return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
     });
 
+    $("#idNumber").blur(function () {
+      var idNumber = $("#idNumber").val();
+      if(idNumber){
+        if(idNumber.length === 18){
+          var year = idNumber.substring(6,10);
+          var month = idNumber.substring(10,12);
+          var day = idNumber.substring(12,14);
+          var sexNumber = idNumber.substring(16,17);
+          var sex;
+          var dateOfBirth = year+"-"+month+"-"+day;
+          console.log(sexNumber % 2);
+          if(sexNumber % 2 === 0){
+            sex = 0;
+          }else{
+            sex = 1;
+          }
 
+          var date=new Date;
+          var currentYear=date.getFullYear();
+          var age = currentYear-year;
+
+          $("#sex").val(sex);
+          form.render('select');
+          $("#age").val(age);
+          $("#dateOfBirth").val(dateOfBirth);
+        }
+      }
+    });
 
 
     table.render({
@@ -441,6 +515,11 @@
         ,{field:'graduationTime', width:120, title: '毕业时间', sort: true}
         ,{field:'registeredAddress', width:180, title: '户口所在地详细地址', sort: true}
         ,{field:'accountCharacter', width:100, title: '户口性质', sort: true}
+        ,{field:'presentAddress', width:100, title: '现住址', sort: true}
+        ,{field:'homePhone', width:100, title: '家庭电话', sort: true}
+        ,{field:'trainingExperience', width:100, title: '培训经历', sort: true}
+        ,{field:'qualification', width:100, title: '专业资格证书', sort: true}
+        ,{field:'workExperience', width:100, title: '主要工作经历', sort: true}
         ,{field:'entryTime', width:120, title: '入职时间', sort: true}
         ,{field:'entryYears', width:100, title: '入职年限', sort: true}
         ,{field:'emergencyContact', width:110, title: '应急联系人', sort: true}
@@ -476,6 +555,11 @@
         ,{field:'graduationTime', width:120, title: '毕业时间', sort: true}
         ,{field:'registeredAddress', width:180, title: '户口所在地详细地址', sort: true}
         ,{field:'accountCharacter', width:100, title: '户口性质', sort: true}
+        ,{field:'presentAddress', width:100, title: '现住址', sort: true}
+        ,{field:'homePhone', width:100, title: '家庭电话', sort: true}
+        ,{field:'trainingExperience', width:100, title: '培训经历', sort: true}
+        ,{field:'qualification', width:100, title: '专业资格证书', sort: true}
+        ,{field:'workExperience', width:100, title: '主要工作经历', sort: true}
         ,{field:'entryTime', width:120, title: '入职时间', sort: true}
         ,{field:'entryYears', width:100, title: '入职年限', sort: true}
         ,{field:'emergencyContact', width:110, title: '应急联系人', sort: true}
@@ -500,9 +584,12 @@
         layer.open({
           type: 1,
           title:"添加人员",
-          area:["1500px","640px"],
+          area:["1500px","700px"],
           content: $("#addUserDiv"),
           btn:["新增","重置","取消"],
+          success:function(){
+            $("#resetUserBtn").click();
+          },
           btn1:function () {
               $("#addUserBtn").click();
           },
@@ -533,16 +620,30 @@
       // } else
 
         if(layEvent === 'del'){ //删除
-        layer.confirm('真的删除行么', function(index){
-          obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
-          layer.close(index);
+        layer.confirm('确定删除吗？', function(index){
+
+          var url = '/userCtrl/deleteUser';
+          var condition = {};
+          condition.id = data.id;
+          var conditionStr = JSON.stringify(condition);
+          $.post(url,{"conditionStr":conditionStr},function (res) {
+            // form.val("addUserForm",res.data);
+            if(res.code === "0"){
+              layer.alert("删除成功！",function () {
+                obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+                layer.closeAll();
+              });
+            }
+          });
+
+
           //向服务端发送删除指令
         });
       } else if(layEvent === 'edit'){ //编辑
         layer.open({
           type:1,
           title:"修改",
-          area:["1500px","640px"],
+          area:["1500px","700px"],
           content: $("#addUserDiv"),
           btn:["确认修改","取消"],
           success:function () {
